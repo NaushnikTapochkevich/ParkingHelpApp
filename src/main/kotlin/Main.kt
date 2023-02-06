@@ -1,7 +1,13 @@
+val action = Actions()
 fun main(args: Array<String>) {
-    println("Hello World!")
-
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    action.startProgram()
+    action.helpInfo()
+    while (true) {
+        when(readln().toString()) {
+            Commands.startCommand -> action.startProgram()
+            Commands.helpCommand -> action.helpInfo()
+            Commands.finishCommand -> action.finishProgram()
+            else -> action.errorInfo()
+        }
+    }
 }
